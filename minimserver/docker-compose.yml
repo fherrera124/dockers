@@ -1,0 +1,10 @@
+---
+version: '3.6'
+services:
+  dlna-server:
+    build:
+      context: .
+    network_mode: host
+    restart: unless-stopped
+    volumes:
+    - /home/server/disk1/media/music:/Music:ro

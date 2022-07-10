@@ -1,0 +1,6 @@
+content/music/*
+content/jingles/*
+
+# exception to the rule
+!content/music/.gitkeep
+

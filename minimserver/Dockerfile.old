@@ -1,0 +1,14 @@
+FROM java:8-jre
+
+#ARG url=https://minimworld.com/files/cdc8d109933f36f20eaa1cf86fae25e4/MinimServer-2.0.15-linux-intel.tar.gz
+
+ARG url=https://minimworld.com/files/40e1b878967c388449180ca3417ab503/MinimServer-2.1-linux-intel.tar.gz
+
+RUN wget -O /opt/MinimServer.tar.gz ${url} && \
+		cd /opt && \
+		tar xf MinimServer.tar.gz && \
+		rm MinimServer.tar.gz
+
+EXPOSE 9790 9791
+
+ENTRYPOINT [ "/opt/minimserver/bin/startc" ]

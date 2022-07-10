@@ -1,0 +1,16 @@
+---
+version: '3.7'
+services:
+  asset-upnp:
+    build:
+      context: ./image
+    container_name: asset-upnp
+    restart: unless-stopped
+    environment:
+      file: "AssetUPnP-Linux-x64"
+    volumes:
+    - "./data:/data"
+    - "/home/server/disk1/media/music:/media:ro"
+    network_mode: host
+    restart: unless-stopped
+    init: true

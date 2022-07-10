@@ -1,0 +1,19 @@
+version: '3.6'
+services:
+
+  pharo-headless-alphine:
+    
+      build: .
+      ulimits:
+        rtprio: 2
+      volumes:
+        - ./image:/pkg/image
+      working_dir: /pkg/image
+      environment:
+        - LD_LIBRARY_PATH=/pkg/vm
+        - IMAGE_NAME=a.image
+        - CHANGES_NAME=a.changes
+        - SOURCES_NAME=Pharo8.0-32bit-0932da8.sources
+      ports:
+        - 8080:8080
+      restart: unless-stopped

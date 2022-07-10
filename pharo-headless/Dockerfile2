@@ -1,0 +1,21 @@
+FROM ubuntu:18.04
+
+ARG URL=http://files.pharo.org/get-files/80/pharo64-linux-headless-latest.zip
+
+ARG copy_directory=/home
+WORKDIR $copy_directory
+
+ADD ./files .
+
+USER root
+
+RUN apt-get -qq -y update && apt-get -qq -y install curl unzip libgit2-dev
+
+RUN curl $URL -o $copy_directory/pharovm.zip \
+&& unzip $copy_directory/pharovm.zip -d $copy_directory \
+&& rm $copy_directory/pharovm.zip
+
+
+EXPOSE 8080
+
+#ENTRYPOINT ["/home/pharo", "a.image", "--no-quit"]

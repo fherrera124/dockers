@@ -1,0 +1,23 @@
+version: '3.6'
+services:
+
+  ffmpeg:
+    container_name: pltnk-ffmpeg
+    image: jrottenberg/ffmpeg:4.4-alpine312
+    restart: unless-stopped
+    volumes:
+      - ./run.sh:/home/ffmpeg/run.sh
+    entrypoint: sh /home/ffmpeg/run.sh
+    depends_on:
+      - icecast
+
+  icecast:
+    container_name: rolla-icecast-kh
+    image: rolla/icecast-kh
+    working_dir: /home/icecast
+    volumes:
+      - ./config:/home/icecast/config
+      - /etc/localtime:/etc/localtime:ro
+    restart: unless-stopped
+    ports:
+      - 8000:8000

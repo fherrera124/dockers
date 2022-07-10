@@ -1,0 +1,65 @@
+
+docker system prune --volumes
+
+docker build --tag pharo-headless:dev .
+docker run --publish 8080:8080 --detach --name jeje pharo-headless:dev
+docker rm --force jeje
+
+
+sudo docker run --ulimit rtprio=2 --publish 8080:8080 --detach --name jeje pharo-headless:dev
+
+docker-compose up -d --force-recreate
+docker-compose down
+
+
+docker-compose up -d --build nombredelservicio
+
+
+
+docker images
+
+docker rmi (id)
+
+
+How to restart a single container with docker-compose:
+
+docker-compose restart worker
+
+docker container ls (sacar id)
+
+docker exec -t -i (id) /bin/bash
+
+---Docker 'run' command to start an interactive BaSH session
+
+# Assuming an Ubuntu Docker image
+$ docker run -it <image> /bin/bash
+
+This won't work if your image has a defined ENTRYPOINT. For these cases use:
+docker run -it --entrypoint /bin/bash <image>
+
+
+
+docker run --rm -v "$(pwd)/mysql/db":/var/lib/mysql -it --entrypoint /bin/bash <image>
+
+
+
+para forzar el build de uno solo:
+docker-compose build (nombre de uno de los servicios dentro de dopcker-compose)
+
+
+
+Para arrancar de 0:
+
+Stop the container(s) using the following command:
+docker-compose down
+Delete all containers using the following command:
+docker rm -f $(docker ps -a -q)
+Delete all volumes using the following command:
+docker volume rm $(docker volume ls -q)
+Restart the containers using the following command:
+docker-compose up -d
+
+
+Si me olvido las diferencias entre arg,env..:
+
+https://vsupalov.com/docker-arg-env-variable-guide/

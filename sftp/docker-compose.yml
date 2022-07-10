@@ -1,0 +1,9 @@
+sftp:
+    image: atmoz/sftp:alpine
+    volumes:
+        - /home/server/disk1:/home/foo/disk1
+        - ./config:/root/.ssh/config
+    ports:
+        - "2225:22"
+    command: foo:pass:1001
+    restart: unless-stopped

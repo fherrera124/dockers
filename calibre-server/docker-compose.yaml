@@ -1,0 +1,12 @@
+version: '3.6'
+services:
+  calibre:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    volumes:
+      - ${LIBRARY}:/library
+      - ./users:/users
+    ports:
+      - "${PORT}:8080"
+    restart: unless-stopped
