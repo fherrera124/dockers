@@ -1,14 +1,12 @@
 # [Docker Calibre Server]
 
-Automatically updating Docker image for `calibre-server`. The image contains a minimal [Calibre](https://calibre-ebook.com/) installation and starts a Calibre server. The current version should correspond with the [latest Calibre release](https://github.com/kovidgoyal/calibre/releases).
+The image contains a minimal [Calibre](https://calibre-ebook.com/) installation and starts a Calibre server. The current version should correspond with the [latest Calibre release](https://github.com/kovidgoyal/calibre/releases).
 
 **Note:** This image is unofficial and not affiliated with Calibre.
 
-Version inspired from https://github.com/wietsedv/docker-calibre-server
-
 ## This version
 
-My version is for use as docker-compose mainly. For my own purposes, and access to the library from different ips, I choose to go to auth mode, instead of manualy whitelist ip. So I created a default user.
+My version is for use as docker-compose mainly. I was inspired by https://github.com/wietsedv/docker-calibre-server, but instead of whitelist the hosts that should have read/write access, I choosed to use the auth mode present in calibre-server, and created a default user that can access/modify the library, regardless the ip.
 
 ## Usage
 
@@ -22,7 +20,7 @@ LIBRARY=/path/to/your/calibre-library/
 PORT=7777
 ```
 
-Then execute
+Then execute:
 
 ```
 $ docker-compose up -d
@@ -40,10 +38,10 @@ With an intance of the calibre service running in the background, get inside the
 $ docker-compose exec calibre bash
 ```
 
-now you should have access at the terminal of the running container. Now run:
+by now, you should be inside the running container. Now issue the command:
 
 ```
 $ calibre-server --userdb users/users.sqlite --manage-users
 ```
 
-After that command, you should be able add/edit/remove users.
+Now, you should be able add/edit/remove users.
