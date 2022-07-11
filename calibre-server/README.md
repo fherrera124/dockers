@@ -6,7 +6,7 @@ The image contains a minimal [Calibre](https://calibre-ebook.com/) installation 
 
 ## This version
 
-My version is for use as docker-compose mainly. I was inspired by https://github.com/wietsedv/docker-calibre-server, but instead of whitelist the hosts that should have read/write access, I choosed to use the auth mode present in calibre-server, and created a default user that can access/modify the library, regardless the ip.
+My version is for use as docker-compose mainly. I was inspired by this [repo](https://github.com/wietsedv/docker-calibre-server), but instead of whitelist the hosts that should have read/write access, I chose to use the auth mode present in calibre-server, and created a default user that can access/modify the library, regardless the user ip.
 
 ## Usage
 
@@ -14,7 +14,7 @@ Calibre server is a REST API + web interface for Calibre. For more information a
 
 ### Steps
 
-Create an .env file and define the next variables:
+Create an `.env` file and define the next variables:
 ```
 LIBRARY=/path/to/your/calibre-library/
 PORT=7777
@@ -26,8 +26,7 @@ Then execute:
 $ docker-compose up -d
 ```
 From now on, on each system start, the calibre service will start on daemon mode.
-Now go to `host-ip:7777`, where host-ip is the ip of the machine where the docker is running on. You must input the
-default credentials (username: user. password: 1234).
+Now go to `host-ip:PORT`, where `host-ip` is the ip of the machine where the docker is running on and `PORT` the port number you defined in the `.env` file. You must issue the default credentials (username: user. password: 1234).
 
 
 ### Add/modify users
@@ -38,7 +37,7 @@ With an intance of the calibre service running in the background, get inside the
 $ docker-compose exec calibre bash
 ```
 
-by now, you should be inside the running container. Now issue the command:
+Now issue the command:
 
 ```
 $ calibre-server --userdb users/users.sqlite --manage-users
