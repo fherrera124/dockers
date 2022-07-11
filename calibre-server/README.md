@@ -6,7 +6,7 @@ The image contains a minimal [Calibre](https://calibre-ebook.com/) installation 
 
 ## This version
 
-My version is for use as docker-compose mainly. I was inspired by this [repo](https://github.com/wietsedv/docker-calibre-server), but instead of whitelist the hosts that should have read/write access, I chose to use the auth mode present in calibre-server, and created a default user that can access/modify the library, regardless the user ip.
+My version is for use as docker-compose mainly. I was inspired by this [repo](https://github.com/wietsedv/docker-calibre-server), but instead of whitelisting the hosts that should have read/write access, I chose to use the auth mode present in Calibre, and created a default user that can access/modify the library, regardless the user IP.
 
 ## Usage
 
@@ -17,7 +17,7 @@ Calibre server is a REST API + web interface for Calibre. For more information a
 Create an `.env` file and define the next variables:
 ```
 LIBRARY=/path/to/your/calibre-library/
-PORT=7777
+PORT=1234
 ```
 
 Then execute:
@@ -26,7 +26,7 @@ Then execute:
 $ docker-compose up -d
 ```
 From now on, on each system start, the calibre service will start on daemon mode.
-Now go to `host-ip:PORT`, where `host-ip` is the ip of the machine where the docker is running on and `PORT` the port number you defined in the `.env` file. You must issue the default credentials (username: user. password: 1234).
+Now go to `host-ip:PORT`, where `host-ip` is the IP of the machine where the docker is running on, and `PORT` the port number you defined in the `.env` file. You must issue the default credentials to access the calibre library (username: user. password: 1234).
 
 
 ### Add/modify users
