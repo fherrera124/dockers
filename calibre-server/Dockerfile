@@ -17,6 +17,7 @@ RUN apt-get update && apt-get install -y \
     iproute2 \
     libfontconfig \
     libgl1 \
+    libnss3-dev \
     && rm -rf /var/lib/apt/lists/*
 COPY --from=0 /opt/calibre /opt/calibre
 RUN /opt/calibre/calibre_postinstall && \
